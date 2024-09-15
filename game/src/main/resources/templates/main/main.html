@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ulisesbocchio.com/archetype/thymeleaf-layout-dialect">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <th:block th:if="${session.userInfo != null}">
+        <span th:text="${session.userInfo.getUserNm()}"></span>
+    </th:block>
+</body>
+
+</html>

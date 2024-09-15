@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 페이지</title>
+</head>
+<body>
+    <form th:action="@{/login/login}" method="post">
+        <table>
+            <tr>
+                <td>id</td>
+                <td><input type="text" name="userId"></td>
+            </tr>
+            <tr>
+                <td>pw</td>
+                <td><input type="text" name="userPw"></td>
+            </tr>
+            <tr>
+                <button type="submit">Login</button>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

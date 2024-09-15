@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mappers.login">
+
+    <select id="selectByUserId" parameterType="com.billyAndMillie.game.login.domain.User" resultType="com.billyAndMillie.game.login.domain.User">
+        SELECT USER_NO, USER_ID, USER_PW, USER_NM, USER_ROLE
+        FROM TB_USER_INFO
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <select id="selectByUserNo" parameterType="com.billyAndMillie.game.login.domain.User" resultType="com.billyAndMillie.game.login.domain.User">
+        SELECT USER_NO, USER_ID, USER_NM, USER_ROLE
+        FROM TB_USER_INFO
+        WHERE USER_NO = #{userNo}
+    </select>
+</mapper>

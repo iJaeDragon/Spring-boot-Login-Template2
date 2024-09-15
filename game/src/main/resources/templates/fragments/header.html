@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:fragment="header">
+        <th:block th:if="${session.userInfo != null}">
+            <span th:text="${session.userInfo.getUserNm()}"></span>
+        </th:block>
+    </div>
+</html>
