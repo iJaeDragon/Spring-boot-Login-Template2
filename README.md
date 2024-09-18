@@ -91,9 +91,9 @@
     application:
       name: game
     datasource:
-      url: jdbc:postgresql://192.168.114.131:5432/bmdb # 수정 필요
-      username: bmuser # 수정 필요
-      password: 1234 # 수정 필요
+      url: # 수정 필요
+      username: # 수정 필요
+      password: # 수정 필요
       driver-class-name: org.postgresql.Driver
     thymeleaf:
       cache: false
