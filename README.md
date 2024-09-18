@@ -76,10 +76,40 @@
       │      │   └─pages
       │      │       ├─login
       │      │       └─main
-      │      └─application.yml # 서버 세팅 관려 설정
+      │      └─application.yml # 서버 세팅 관련 설정
       └─test
           └─java
               └─com
                   └─billyAndMillie
                       └─game
+```
+
+## application.yml
+
+```
+  spring:
+    application:
+      name: game
+    datasource:
+      url: jdbc:postgresql://192.168.114.131:5432/bmdb # 수정 필요
+      username: bmuser # 수정 필요
+      password: 1234 # 수정 필요
+      driver-class-name: org.postgresql.Driver
+    thymeleaf:
+      cache: false
+      check-template-location: true
+      prefix: classpath:/templates/
+      suffix: .html
+      enabled: true
+  
+  # MyBatis Configuration
+  # Locations of MyBatis mapper XML files
+  mybatis:
+      mapper-locations: classpath:mapper/**/*.xml
+      configuration:
+        map-underscore-to-camel-case: true # mybatis ??? domain? ???? ? ??? ex) (SQL)USER_NO -> (Domain)userNo
+  
+  # Server Info
+  server:
+    port: 80
 ```
