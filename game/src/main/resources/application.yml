@@ -6,6 +6,12 @@ spring:
     username: bmuser
     password: 1234
     driver-class-name: org.postgresql.Driver
+  thymeleaf:
+    cache: false
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
 
 # MyBatis Configuration
 # Locations of MyBatis mapper XML files

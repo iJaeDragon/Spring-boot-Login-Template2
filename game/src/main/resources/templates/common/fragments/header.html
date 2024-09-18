@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:fragment="HeaderFragment">
+
+    <style>
+        .user-nav {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .user-nav > ul > li{
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+
+    <div class="user-nav">
+        <ul>
+            <th:block th:if="${session.userInfo == null}">
+                <li><a onclick="location.href='/login/loginView'">로그인</a></li>
+            </th:block>
+            <th:block th:if="${session.userInfo != null}">
+                <li>
+                    <a onclick="document.getElementById('logoutForm').submit();">로그아웃</a>
+
+                    <form id="logoutForm" th:action="@{/login/logout}" method="post" style="display: none">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                    </form>
+                </li>
+            </th:block>
+
+            <li><a onclick="location.href='/login/myPageView'">마이페이지</a></li>
+        </ul>
+    </div>
+
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:replace="common/fragments/config :: ConfigFragment"></head>
+
+    <body>
+        <!--Header 영역을 참조합니다.-->
+        <header th:replace="common/fragments/header :: HeaderFragment"></header>
+
+        <!--Content 내용 영역을 참조합니다-->
+        <th:block layout:fragment="Content"></th:block>
+    </body>
+</html>

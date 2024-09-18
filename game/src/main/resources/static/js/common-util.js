@@ -22,20 +22,40 @@ commonUtil.formToObject = function(dom) {
 commonUtil.ajaxRequest = function(method, url, data, successCallback, errorCallback) {
     const xhr = new XMLHttpRequest();
 
+    // CSRF 토큰을 설정
+    // config.html meta 에서 정의
+    const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+    const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
+
     xhr.open(method, url, true);
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                // 요청이 성공했을 때
-                const result = JSON.parse(xhr.response)
+    // CSRF 토큰 헤더 추가
+    if (csrfToken && csrfHeader) {
+        xhr.setRequestHeader(csrfHeader, csrfToken);
+    }
+
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            try {
+                const result = JSON.parse(xhr.responseText);
+
+                if(result.success != null) {
+                    if(!result.success) {
+                        alert(result['errorMsg']);
+                        errorCallback(xhr);
+
+                        return;
+                    }
+                }
 
                 successCallback(result);
-            } else {
-                // 요청이 실패했을 때
+            } catch (e) {
                 errorCallback(xhr);
             }
+        } else {
+            errorCallback(xhr);
         }
     };
 
@@ -48,4 +68,4 @@ commonUtil.ajaxRequest = function(method, url, data, successCallback, errorCallb
     } else {
         xhr.send();
     }
-}
+};

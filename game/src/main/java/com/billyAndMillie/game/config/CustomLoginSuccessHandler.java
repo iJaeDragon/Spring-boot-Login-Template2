@@ -33,6 +33,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
+
         // 로그인한 사용자의 정보를 가져옴
         String userNo = authentication.getName();
 

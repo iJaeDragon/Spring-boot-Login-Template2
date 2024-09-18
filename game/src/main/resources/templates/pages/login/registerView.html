@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{./common/layouts/utilLayout}"
+      layout:fragment="Content"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
+    <script>
+        window.onload = function() {
+            document.getElementById("regBtn").onclick = function() {
+                const regInfo = commonUtil.formToObject(document.getElementById("regForm"));
+
+                commonUtil.ajaxRequest('POST', '/login/register', regInfo,
+                    function(success) {
+                        alert("회원가입 성공");
+                        location.href="/";
+                    }, function(error) {
+
+                    }
+                )
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="regForm" method="post" onsubmit="return false;">
+        <table>
+            <tr>
+                <td>id</td>
+                <td><input type="text" name="userId"></td>
+            </tr>
+            <tr>
+                <td>pw</td>
+                <td><input type="text" name="userPw"></td>
+            </tr>
+            <tr>
+                <td>nm</td>
+                <td><input type="text" name="userNm"></td>
+            </tr>
+            <tr>
+                <input id="regBtn" type="button" value="register">
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

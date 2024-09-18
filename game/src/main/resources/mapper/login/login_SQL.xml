@@ -14,4 +14,20 @@
         FROM TB_USER_INFO
         WHERE USER_NO = #{userNo}
     </select>
+
+    <select id="selectIdCount" parameterType="com.billyAndMillie.game.login.domain.User" resultType="int">
+        SELECT COUNT(*) CNT
+        FROM TB_USER_INFO
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <insert id="insertUser" parameterType="com.billyAndMillie.game.login.domain.User">
+        INSERT INTO TB_USER_INFO(USER_NO, USER_ID, USER_PW, USER_NM)
+        VALUES(
+               (SELECT NULLIF(MAX(CAST(USER_NO AS INTEGER)), 0) + 1 FROM TB_USER_INFO),
+                #{userId},
+               #{userPw},
+               #{userNm}
+               )
+    </insert>
 </mapper>

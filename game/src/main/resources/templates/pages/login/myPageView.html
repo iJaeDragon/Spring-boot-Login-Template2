@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+</head>
+<body>
+    <th:block th:if="${session.userInfo != null}">
+        <ul>
+            <li>userNo : <span th:text="${session.userInfo.getUserNo()}"></span></li>
+            <li>userId : <span th:text="${session.userInfo.getUserId()}"></span></li>
+            <li>userNm : <span th:text="${session.userInfo.getUserNm()}"></span></li>
+        </ul>
+    </th:block>
+</body>
+</html>
