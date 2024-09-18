@@ -35,3 +35,51 @@
   comment on column tb_user_info.user_nm is '사용자 이름';
   comment on column tb_user_info.user_role is '사용자 역할';
 ```
+
+## File Description
+
+```
+    ─src
+      ├─main
+      │  ├─java
+      │  │  └─com
+      │  │      └─billyAndMillie
+      │  │          └─game
+      │  │              ├─common
+      │  │              │  ├─dao
+      │  │              │  └─domain
+      │  │              ├─config
+      │  │              ├  ├─CustomAuthenticationEntryPoint.java # POST 요청과 GET 요청을 구분하고 처리하기 위한 설정
+      │  │              ├  ├─CustomAuthenticationFailureHandler.java # 로그인 실패 시 에러 전달 설정
+      │  │              ├  ├─CustomLoginSuccessHandler.java # 로그인 성공 시 처리 설정
+      │  │              │  └─SecurityConfig.hava # 시큐리티 관련 설정 세팅
+      │  │              ├─login
+      │  │              │  ├─Controller
+      │  │              │  ├─domain
+      │  │              │  └─Service
+      │  │              └─main
+      │  │                  └─Controller
+      │  └─resources
+      │      ├─mapper
+      │      │  └─login
+      │      ├─static
+      │      │  ├─css
+      │      │  └─js
+      │      └─templates
+      │      │   ├─common
+      │      │   │  ├─fragments
+      │      │   │  │ ├─config.html # 공통설정 정의
+      │      │   │  │ └─header.html # 공통헤더 영역
+      │      │   │  └─layouts
+      │      │   │  │ ├─defaultLayout.html # 기본 공통 레이아웃
+      │      │   │  │ └─utilLayout.html # 공통설정을 불러오는 공통 레이아웃
+      │      │   └─pages
+      │      │       ├─login
+      │      │       └─main
+      │      └─application.yml # 서버 세팅 관려 설정
+      └─test
+          └─java
+              └─com
+                  └─billyAndMillie
+                      └─game
+```
