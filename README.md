@@ -6,7 +6,7 @@
 * Type : Gradle - Groovy
 * JDK : 17.0.9
 * Java : 17
-* Package Create : Jae
+* Package Create : Jar
 * Spring boot : 3.3.3
 * Template Engines : thymeleaf
 * Data Access Frameworks : MyBatis
